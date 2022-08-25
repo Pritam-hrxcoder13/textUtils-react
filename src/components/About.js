@@ -1,39 +1,46 @@
 import React from 'react'
-import { useState } from 'react'
+// import { useState } from 'areact'
 
-export default function ABOUT() {
-    const[myStyle,setmyStyle] = useState({
-        color : 'black',
-        backgroundColor : 'white'
-    })
-    const [btnText, setBtnText] = useState("enable dark mode")
+export default function About(props) {
+    // const[myStyle,setmyStyle] = useState({
+    //     color : 'black',
+    //     backgroundColor : 'white'
+    // })
+    // const [btnText, setBtnText] = useState("enable dark mode")
 
-    let toggleStyle = ()=>{
-        if(myStyle.color === 'black'){
-            setmyStyle({
-                color : 'white',
-                backgroundColor : 'black'
-            })
-            setBtnText("enable light mode")
-        }
-        else{
-            setmyStyle({
-                color : 'black',
-                backgroundColor : 'white'
-            })
-            setBtnText("enable dark mode")
-        }
+    // let toggleStyle = ()=>{
+    //     if(myStyle.color === 'black'){
+    //         setmyStyle({
+    //             color : 'white',
+    //             backgroundColor : 'black'
+    //         })
+    //         setBtnText("enable light mode")
+    //     }
+    //     else{
+    //         setmyStyle({
+    //             color : 'black',
+    //             backgroundColor : 'white'
+    //         })
+    //         setBtnText("enable dark mode")
+    //     }
+    // }
+    const myStyle ={
+        color:props.mode ==='dark'?'white':'black',
+        backgroundColor:props.mode ==='dark'?'rgb(20 66 138 / 1)':'white',
+        // border:'2px solid black'
+        borderBox:'none'
+
     }
     
 
     return (
-        <div className = "container" style = {myStyle}>
-        <h1>About us </h1>
+        <div className = "container" style={{color:props.mode ==='light'?'white':'rgb(20 50 82)'}}>
+        <h1 style={{color:props.mode ==='light'?'black':'white'}}>About us </h1>
         <div className="accordion" id="accordionExample" style = {myStyle}>
             <div className="accordion-item">
                 <h2 className="accordion-header" id="headingOne">
                 <button className="accordion-button" type="button" data-bs-toggle="collapse"data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style = {myStyle}>
-                        Accordion Item #1
+                        Amalyze your text
                 </button>
                 </h2>
                 <div id="collapseOne" className="accordion-collapse collapse show"      aria-labelledby="headingOne"data-bs-parent="#accordionExample">
@@ -45,7 +52,7 @@ export default function ABOUT() {
             <div className="accordion-item">
                 <h2 className="accordion-header" id="headingTwo">
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"style = {myStyle}>
-                    Accordion Item #2
+                    Free to use
                 </button>
                 </h2>
                 <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -57,7 +64,7 @@ export default function ABOUT() {
         <div className="accordion-item">
             <h2 className="accordion-header" id="headingThree">
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style = {myStyle}>
-                Accordion Item #3
+                Browser compatible
             </button>
             </h2>
             <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -68,7 +75,7 @@ export default function ABOUT() {
         </div>
         </div>
         <div className="container my-3 ">
-                <button type="button" onClick= {toggleStyle} className="btn btn-primary">{btnText}</button>
+                {/* <button type="button" onClick= {toggleStyle} className="btn btn-primary">{btnText}</button> */}
         </div>
         </div>
     )

@@ -5,52 +5,55 @@ import About from './components/About';
 import { useState } from 'react';
 import Alert from './components/Alert';
 import {
-  BrowserRouter,
-  Routes,
-  Route,
+    BrowserRouter,
+    Routes,
+    Route,
 } from "react-router-dom";
 
 
 function App() {
-  const [Mode,setMode] = useState('light');
-  const [alert, setAlert] = useState(null)
-  const showAlert = (messege, type)=>{
+    const [Mode,setMode] = useState('light');
+    const [alert, setAlert] = useState(null)
+    const showAlert = (messege, type)=>{
     setAlert({
-      msg:messege,
-      type:type
+    msg:messege,
+    type:type
     });
     setTimeout(() => {
-      setAlert(null)
+    setAlert(null)
     }, 1500);
-  }
-  const toggleMode =()=>{
+    }
+    const toggleMode =()=>{
     if(Mode ==='light'){
-      setMode('dark')
-      document.body.style.backgroundColor = "rgb(20 50 82)" 
-      showAlert("Dark mode has been enabled!", "success");
-      document.title= "textUtlis- dark mode";
+    setMode('dark')
+    document.body.style.backgroundColor = "rgb(20 50 82)" 
+    showAlert("Dark mode has been enabled!", "success");
+    document.title= "textUtils- dark mode";
     }
     else{
-      setMode('light')
-      document.body.style.backgroundColor = "white"
-      showAlert("Light mode has been enabled!", "success");
-      document.title= "textUtlis- light mode";
+    setMode('light')
+    document.body.style.backgroundColor = "white"
+    showAlert("Light mode has been enabled!", "success");
+    document.title= "textUtils- light mode";
     }
-  }
-  return(
-  <>
+}
+    return(
+    <>
     <BrowserRouter>
     <Navbar title="TextUtils" mode={Mode} toggleMode={toggleMode}/>
     <Alert alert={alert}/>
     <div className="container my-3">
     <Routes>
-      <Route exact path="/about" element={<About />} />
-      <Route exact path="/" element={<TextForm showAlert={showAlert} mode={Mode} heading="Analyze your text" />} />
+    <Route exact path="/about" element={<About mode={Mode}/>} />
+    <Route exact path="/" element={<TextForm showAlert={showAlert} mode={Mode} heading="Analyze your text" />}/>
     </Routes>
     </div>
     </BrowserRouter>
     </>
-  );
+);
 }
 
 export default App;
+
+
+
